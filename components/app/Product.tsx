@@ -11,7 +11,7 @@ const Product = (props: Props) => {
             <span className="absolute top-4 left-4 bg-blue-700 text-white px-4 py-1 rounded-xl text-xs">
                 39%
             </span>
-            <Image src={productOne} alt="product image" className="aspect-square object-cover object-center rounded-lg" />
+            <Image src={productOne} alt="product image" className="w-full aspect-square object-cover object-center rounded-lg" />
             <div className="flex justify-between items-start">
                 <div>
                     <h4 className="font-bold block mb-1">Airpods Handsfree</h4>
