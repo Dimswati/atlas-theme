@@ -23,22 +23,30 @@ type Props = {}
 
 const SwiperCards = (props: Props) => {
 
+    const [isClient, setIsClient] = useState(false)
     const [firstSwiper, setFirstSwiper] = useState<SwiperType | null>(null)
     const [secondSwiper, setSecondSwiper] = useState<SwiperType | null>(null)
-    const [width, setWidth] = useState<number>(768)
+    const [width, setWidth] = useState<number>(() => typeof window === "undefined" ? 768 : window.innerWidth)
 
     useEffect(() => {
-        window.addEventListener("resize", () => {
+        setIsClient(true)
+        const handleResize = () => {
             setWidth(window.innerWidth)
-        })
+        }
+
+        window.addEventListener("resize", handleResize)
 
         return () => {
-            window.removeEventListener("resize", () => { })
+            window.removeEventListener("resize", handleResize)
         }
     }, [width])
 
     const getDirection = () => {
         return width <= 768 ? "horizontal" : "vertical"
+    }
+
+    if(!isClient) {
+        return null
     }
 
     return (
@@ -154,7 +162,7 @@ const SwiperCards = (props: Props) => {
                 {/* <div className='absolute w-40 z-50 inset-y-0 right-0 h-full grid content-center'>
                 </div> absolute md:w-40 bg-slate-200 z-50 md:right-0 inset-x-0 md:inset-y-0 h-40 md:h-full grid content-center */}
             </Swiper>
-            <section className='absolute w-full md:w-40 z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto h-32 md:h-full grid content-center'>
+            <section className='absolute w-full md:w-32 z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto h-28 md:h-full grid content-center md:border-l border-t md:border-t-0 border-slate-100/20'>
                 <Swiper
                     direction={getDirection()}
                     modules={[Autoplay, Controller]}

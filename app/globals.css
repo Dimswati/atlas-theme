@@ -92,6 +92,7 @@
     z-index: 20;
     width: 72px;
     height: 72px;
+    transform: rotate(0deg);
     stroke-width: 2px;
     stroke: #fff;
     fill: none;
