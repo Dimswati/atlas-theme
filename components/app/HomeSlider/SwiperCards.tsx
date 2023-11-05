@@ -16,6 +16,7 @@ import author from '../../../public/images/author.png'
 import 'swiper/swiper-bundle.css'
 
 import Image from 'next/image';
+import Link from 'next/link';
 // import CardsController from './CardsControllerSwiper';
 
 type Props = {}
@@ -24,10 +25,9 @@ const SwiperCards = (props: Props) => {
 
     const [firstSwiper, setFirstSwiper] = useState<SwiperType | null>(null)
     const [secondSwiper, setSecondSwiper] = useState<SwiperType | null>(null)
-    const [width, setWidth] = useState<number>(800)
+    const [width, setWidth] = useState<number>(768)
 
     useEffect(() => {
-
         window.addEventListener("resize", () => {
             setWidth(window.innerWidth)
         })
@@ -46,7 +46,7 @@ const SwiperCards = (props: Props) => {
             <Swiper
                 modules={[EffectFade, Autoplay, Controller]}
                 autoplay={{
-                    delay: 2500,
+                    delay: 5000,
                     disableOnInteraction: false
                 }}
                 loop
@@ -64,14 +64,14 @@ const SwiperCards = (props: Props) => {
                     <div className='relative rounded-xl overflow-hidden w-full h-full'>
                         <Image src={swiperImageOne} alt='swiper image one' fill className='object-cover object-center rounded-xl group-hover:scale-110 transition duration-500' priority />
                     </div>
-                    <div className='z-20 absolute rounded-xl top-0 left-0 pt-12 px-8 flex flex-col gap-y-6 md:w-3/4 w-full transition duration-500 group-hover:-translate-y-3'>
+                    <div className='z-20 absolute rounded-xl top-0 left-0 pt-12 px-8 flex flex-col gap-y-4 md:gap-y-6 md:w-3/4 w-full transition duration-500 group-hover:-translate-y-3'>
                         <span className='uppercase text-xs font-semibold'>gadget</span>
                         <h2 className='text-3xl md:text-4xl font-bold leading-normal md:leading-normal'>
-                            <span className='bg-gradient-to-r from-white 
+                            <Link href="/blog/blog-one" className='bg-gradient-to-r from-white 
                 to-white bg-[length:0px_1px]
                 hover:bg-[length:100%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 cursor-pointer'>
                                 Will Humans Be Able to Live in Mars in the Future?
-                            </span>
+                            </Link>
                         </h2>
                         <div className='flex gap-x-2 items-center'>
                             <Image src={author} alt='author' className='rounded-full' />
@@ -87,14 +87,14 @@ const SwiperCards = (props: Props) => {
                     <div className='relative rounded-xl overflow-hidden w-full h-full'>
                         <Image src={swiperImageTwo} alt='swiper image two' fill className='object-cover object-center rounded-xl group-hover:scale-110 transition duration-500' priority />
                     </div>
-                    <div className='z-20 absolute rounded-xl top-0 left-0 pt-12 px-8 flex flex-col gap-y-6 md:w-3/4 w-full transition duration-500 group-hover:-translate-y-3'>
+                    <div className='z-20 absolute rounded-xl top-0 left-0 pt-12 px-8 flex flex-col gap-y-4 md:gap-y-6 md:w-3/4 w-full transition duration-500 group-hover:-translate-y-3'>
                         <span className='uppercase text-xs font-semibold'>gadget</span>
                         <h2 className='text-3xl md:text-4xl font-bold leading-normal md:leading-normal'>
-                            <span className='bg-gradient-to-r from-white 
+                            <Link href="/blog/blog-one" className='bg-gradient-to-r from-white 
                 to-white bg-[length:0px_1px]
                 hover:bg-[length:100%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 cursor-pointer'>
                                 Surprising Benefits of Honeydew Melon
-                            </span>
+                            </Link>
                         </h2>
                         <div className='flex gap-x-2 items-center'>
                             <Image src={author} alt='author' className='rounded-full' />
@@ -110,14 +110,14 @@ const SwiperCards = (props: Props) => {
                     <div className='relative rounded-xl overflow-hidden w-full h-full'>
                         <Image src={swiperImageThree} alt='swiper image three' fill className='object-cover object-center rounded-xl group-hover:scale-110 transition duration-500' priority />
                     </div>
-                    <div className='z-20 absolute rounded-xl top-0 left-0 pt-12 px-8 flex flex-col gap-y-6 md:w-3/4 w-full transition duration-500 group-hover:-translate-y-3'>
+                    <div className='z-20 absolute rounded-xl top-0 left-0 pt-12 px-8 flex flex-col gap-y-4 md:gap-y-6 md:w-3/4 w-full transition duration-500 group-hover:-translate-y-3'>
                         <span className='uppercase text-xs font-semibold'>gadget</span>
                         <h2 className='text-3xl md:text-4xl font-bold leading-normal md:leading-normal'>
-                            <span className='bg-gradient-to-r from-white 
+                            <Link href="/blog/blog-one" className='bg-gradient-to-r from-white 
                 to-white bg-[length:0px_1px]
                 hover:bg-[length:100%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 cursor-pointer'>
-                                Spicy Crispy Chicken Burger Recipe
-                            </span>
+                               Spicy Crispy Chicken Burger Recipe
+                            </Link>
                         </h2>
                         <div className='flex gap-x-2 items-center'>
                             <Image src={author} alt='author' className='rounded-full' />
@@ -133,14 +133,14 @@ const SwiperCards = (props: Props) => {
                     <div className='relative rounded-xl overflow-hidden w-full h-full'>
                         <Image src={swiperImageFour} alt='swiper image four' fill className='object-cover object-center rounded-xl group-hover:scale-110 transition duration-500' priority />
                     </div>
-                    <div className='z-20 absolute rounded-xl top-0 left-0 pt-12 px-8 flex flex-col gap-y-6 md:w-3/4 w-full transition duration-500 group-hover:-translate-y-3'>
+                    <div className='z-20 absolute rounded-xl top-0 left-0 pt-12 px-8 flex flex-col gap-y-4 md:gap-y-6 md:w-3/4 w-full transition duration-500 group-hover:-translate-y-3'>
                         <span className='uppercase text-xs font-semibold'>gadget</span>
                         <h2 className='text-3xl md:text-4xl font-bold leading-normal md:leading-normal'>
-                            <span className='bg-gradient-to-r from-white 
+                            <Link href="/blog/blog-one" className='bg-gradient-to-r from-white 
                 to-white bg-[length:0px_1px]
                 hover:bg-[length:100%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 cursor-pointer'>
-                                Will Humans Be Able to Live in Mars in the Future?
-                            </span>
+                               Will Humans Be Able to Live in Mars in the Future?
+                            </Link>
                         </h2>
                         <div className='flex gap-x-2 items-center'>
                             <Image src={author} alt='author' className='rounded-full' />
@@ -159,7 +159,7 @@ const SwiperCards = (props: Props) => {
                     direction={getDirection()}
                     modules={[Autoplay, Controller]}
                     autoplay={{
-                        delay: 2500,
+                        delay: 5000,
                         disableOnInteraction: false
                     }}
                     loop={true}
