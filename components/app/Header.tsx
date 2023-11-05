@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import { BiSearch, BiLogoFacebookCircle, BiLogoDiscordAlt } from 'react-icons/bi'
-
 import { cn } from '@/lib/utils'
 
 import Image from 'next/image'
-import atlas from '../../../public/images/atlas.png'
-import atlasLight from '../../../public/images/atlas-light.png'
+import atlas from '../../public/images/atlas.png'
+import atlasLight from '../../public/images/atlas-light.png'
 
 import MenuSvg from '@/components/icons/MenuSvg'
 
