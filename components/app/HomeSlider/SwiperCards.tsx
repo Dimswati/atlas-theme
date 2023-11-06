@@ -45,6 +45,10 @@ const SwiperCards = (props: Props) => {
         return width <= 768 ? "horizontal" : "vertical"
     }
 
+    // const getSpaceBetween = () => {
+    //     return width <= 768 ? 10 : 20
+    // }
+
     if (!isClient) {
         return null
     }
@@ -56,9 +60,10 @@ const SwiperCards = (props: Props) => {
                 autoplay={{
                     delay: 5000,
                     disableOnInteraction: false,
-                    waitForTransition: false
+                    waitForTransition: true
                 }}
                 loop
+                speed={700}
                 spaceBetween={0}
                 slidesPerView={1}
                 onSlideChange={() => { }}
@@ -255,19 +260,22 @@ const SwiperCards = (props: Props) => {
                 {/* <div className='absolute w-40 z-50 inset-y-0 right-0 h-full grid content-center'>
                 </div> absolute md:w-40 bg-slate-200 z-50 md:right-0 inset-x-0 md:inset-y-0 h-40 md:h-full grid content-center */}
             </Swiper>
-            <section className='absolute w-full md:w-32 z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto h-28 md:h-full grid content-center md:border-l border-t md:border-t-0 border-slate-100/20'>
+            <section className='absolute md:w-32 z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto h-28 md:h-full grid content-center md:border-l border-t md:border-t-0 border-slate-100/20'>
                 <Swiper
                     direction={getDirection()}
                     modules={[Autoplay, Controller]}
                     autoplay={{
                         delay: 5000,
                         disableOnInteraction: false,
-                        waitForTransition: false
+                        waitForTransition: true
                     }}
                     loop={true}
-                    spaceBetween={20}
+                    speed={700}
+                    // spaceBetween={20}
                     slidesPerView={3}
-                    onSlideChange={() => { }}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    // onSlideChange={() => { }}
                     onSwiper={setSecondSwiper}
                     controller={{
                         control: firstSwiper
@@ -277,7 +285,7 @@ const SwiperCards = (props: Props) => {
                     }}
                     touchRatio={0.2}
                     slideToClickedSlide={true}
-                    className='md:h-[282px] w-[282px] md:w-auto'
+                    className='md:h-[282px] w-[70vw] md:w-auto'
                 >
                     <SwiperSlide className='swiper-controller'>
                         <div className="relative w-[72px] h-[72px]">
