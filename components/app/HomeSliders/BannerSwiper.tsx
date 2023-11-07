@@ -264,7 +264,7 @@ const BannerSwiper = (props: Props) => {
                 </div> absolute md:w-40 bg-slate-200 z-50 md:right-0 inset-x-0 md:inset-y-0 h-40 md:h-full grid content-center */}
                 {/* absolute md:w-full z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto bg-slate-100/70 h-28 md:h-full grid content-center md:border-l border-t md:border-t-0 border-slate-100/20 overflow-hidden */}
             </Swiper>
-            <section className='absolute w-full md:w-32 z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto bg-slate-100/70 h-28 md:h-full grid content-center md:border-l border-t md:border-t-0 border-slate-100/20 overflow-hidden '>
+            <section className='absolute w-full md:w-32 z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto h-28 md:h-full grid content-center pl-8 md:pl-0 md:border-l border-t md:border-t-0 border-slate-100/20 overflow-hidden '>
                 <Swiper
                     direction={getDirection()}
                     modules={[Autoplay, Controller]}
@@ -275,7 +275,7 @@ const BannerSwiper = (props: Props) => {
                     }}
                     loop={true}
                     speed={700}
-                    spaceBetween={"10%"}
+                    spaceBetween={8}
                     slidesPerView={3}
                     // centeredSlides={true}
                     // onSlideChange={() => { }}
@@ -287,7 +287,7 @@ const BannerSwiper = (props: Props) => {
                         // setProgress(progress)
                     }}
                     slideToClickedSlide={true}
-                    className='md:h-[282px] w-[100vw] bg-slate-100/50 md:w-auto'
+                    className='md:h-[282px] w-[80vw] md:w-auto'
                 >
                     <SwiperSlide className='swiper-controller'>
                         <div className="relative w-[72px] h-[72px]">
