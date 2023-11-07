@@ -1,3 +1,5 @@
+"use client"
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { type Swiper as SwiperType } from 'swiper/types'
@@ -21,7 +23,7 @@ import Link from 'next/link';
 
 type Props = {}
 
-const SwiperCards = (props: Props) => {
+const BannerSwiper = (props: Props) => {
 
     const [isClient, setIsClient] = useState(false)
     const [firstSwiper, setFirstSwiper] = useState<SwiperType | null>(null)
@@ -54,7 +56,7 @@ const SwiperCards = (props: Props) => {
     }
 
     return (
-        <div className='relative w-full h-full'>
+        <div className='relative w-full h-[450px]'>
             <Swiper
                 modules={[EffectFade, Autoplay, Controller]}
                 autoplay={{
@@ -64,6 +66,7 @@ const SwiperCards = (props: Props) => {
                 }}
                 loop
                 speed={700}
+                grabCursor={true}
                 spaceBetween={0}
                 slidesPerView={1}
                 onSlideChange={() => { }}
@@ -259,8 +262,9 @@ const SwiperCards = (props: Props) => {
                 </SwiperSlide>
                 {/* <div className='absolute w-40 z-50 inset-y-0 right-0 h-full grid content-center'>
                 </div> absolute md:w-40 bg-slate-200 z-50 md:right-0 inset-x-0 md:inset-y-0 h-40 md:h-full grid content-center */}
+                {/* absolute md:w-full z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto bg-slate-100/70 h-28 md:h-full grid content-center md:border-l border-t md:border-t-0 border-slate-100/20 overflow-hidden */}
             </Swiper>
-            <section className='absolute md:w-32 z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto h-28 md:h-full grid content-center md:border-l border-t md:border-t-0 border-slate-100/20'>
+            <section className='absolute w-full md:w-32 z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto bg-slate-100/70 h-28 md:h-full grid content-center md:border-l border-t md:border-t-0 border-slate-100/20 overflow-hidden '>
                 <Swiper
                     direction={getDirection()}
                     modules={[Autoplay, Controller]}
@@ -271,10 +275,9 @@ const SwiperCards = (props: Props) => {
                     }}
                     loop={true}
                     speed={700}
-                    // spaceBetween={20}
+                    spaceBetween={"10%"}
                     slidesPerView={3}
-                    grabCursor={true}
-                    centeredSlides={true}
+                    // centeredSlides={true}
                     // onSlideChange={() => { }}
                     onSwiper={setSecondSwiper}
                     controller={{
@@ -283,9 +286,8 @@ const SwiperCards = (props: Props) => {
                     onAutoplayTimeLeft={(s: SwiperType, time: number, progress: number) => {
                         // setProgress(progress)
                     }}
-                    touchRatio={0.2}
                     slideToClickedSlide={true}
-                    className='md:h-[282px] w-[70vw] md:w-auto'
+                    className='md:h-[282px] w-[100vw] bg-slate-100/50 md:w-auto'
                 >
                     <SwiperSlide className='swiper-controller'>
                         <div className="relative w-[72px] h-[72px]">
@@ -357,6 +359,4 @@ const SwiperCards = (props: Props) => {
     )
 }
 
-// { controlledSwiper }: { controlledSwiper: SwiperType | null }
-
-export default SwiperCards
+export default BannerSwiper

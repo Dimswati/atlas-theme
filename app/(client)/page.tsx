@@ -1,10 +1,10 @@
 import Header from "@/components/app/Header"
-import HomeSlider from "@/components/app/HomeSlider"
+import BannerSwiper from "@/components/app/HomeSliders/BannerSwiper"
 
 export default function Home() {
   return (
     <main className="lg:px-0">
-      <HomeSlider/>
+       <BannerSwiper/>
     </main>
   )
 }
