@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import Header from '@/components/app/Header'
 import ThemeSwitcher from '@/components/app/ThemeSwitcher'
 import Footer from '@/components/app/Footer'
+import Menu from '@/components/app/Menu'
 
 const font = Poppins({
   subsets: ['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cn(font.className, ' dark:text-white text-black')}>
         <ThemeProvider attribute='class' defaultTheme='light' enableSystem={false}>
+          <Menu />
           <Header />
           <div className='max-w-[1070px] mx-auto px-5 xl:px-0'>
             {children}

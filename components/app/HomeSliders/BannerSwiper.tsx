@@ -47,10 +47,6 @@ const BannerSwiper = (props: Props) => {
         return width <= 768 ? "horizontal" : "vertical"
     }
 
-    // const getSpaceBetween = () => {
-    //     return width <= 768 ? 10 : 20
-    // }
-
     if (!isClient) {
         return null
     }
@@ -264,7 +260,7 @@ const BannerSwiper = (props: Props) => {
                 </div> absolute md:w-40 bg-slate-200 z-50 md:right-0 inset-x-0 md:inset-y-0 h-40 md:h-full grid content-center */}
                 {/* absolute md:w-full z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto bg-slate-100/70 h-28 md:h-full grid content-center md:border-l border-t md:border-t-0 border-slate-100/20 overflow-hidden */}
             </Swiper>
-            <section className='absolute w-full md:w-32 z-50 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto h-28 md:h-full grid content-center pl-8 md:pl-0 md:border-l border-t md:border-t-0 border-slate-100/20 overflow-hidden '>
+            <section className='absolute w-full md:w-32 z-20 md:right-0 inset-x-0 md:inset-x-auto inset-y-auto md:inset-y-0 bottom-0 md:bottom-auto h-28 md:h-full grid content-center pl-8 md:pl-0 md:border-l border-t md:border-t-0 border-slate-100/20 overflow-hidden '>
                 <Swiper
                     direction={getDirection()}
                     modules={[Autoplay, Controller]}
