@@ -10,12 +10,15 @@ import { AiOutlineClose } from "react-icons/ai"
 import useMenu from "@/lib/hooks/useMenu"
 import { cn } from "@/lib/utils"
 import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 
 type MenuProps = {}
 
 const Menu = (props: MenuProps) => {
 
-    const [ isClient, setIsclient ] = useState(false)
+    const pathname = usePathname()
+
+    const [isClient, setIsclient] = useState(false)
 
     const { isOpen, onClose } = useMenu()
 
@@ -23,17 +26,24 @@ const Menu = (props: MenuProps) => {
         setIsclient(true)
     }, [])
 
-    if(!isClient) {
+    useEffect(() => {
+        if (isOpen) {
+            onClose()
+        }
+
+    }, [pathname])
+
+    if (!isClient) {
         return null
     }
 
     return (
-        <aside className={cn('h-screen fixed top-0 left-0 z-50 w-[320px] my-8 px-5 dark:bg-black bg-white transition duration-500', isOpen ? 'translate-x-0' :'-translate-x-[320px]')}>
+        <aside className={cn('h-screen fixed top-0 left-0 z-50 w-[320px] my-8 px-5 dark:bg-black bg-white transition duration-500', isOpen ? 'translate-x-0' : '-translate-x-[320px]')}>
             <div className="flex justify-between items-center">
                 <Image src={atlas} alt='dark atlas logo' className='w-[80px] h-auto inline-block dark:hidden' />
                 <Image src={atlasLight} alt='light atlas logo' className='w-[80px] h-auto dark:inline-block hidden' />
                 <Button size={'default'} variant={'ghost'} onClick={() => onClose()} className="px-0 hover:bg-transparent">
-                    <AiOutlineClose/>
+                    <AiOutlineClose />
                 </Button>
             </div>
             <section className='text-sm font-medium flex flex-col gap-y-4 mt-12'>
