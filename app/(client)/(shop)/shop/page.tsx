@@ -1,6 +1,5 @@
 import Banner from "@/components/app/Banner"
 import SelectBox from "@/components/app/SelectBox"
-import Image from "next/image"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { Button } from "@/components/ui/button"
 import Product from "@/components/app/Product"

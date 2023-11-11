@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import blogImage from "../../../public/images/swiper-image-one.jpeg"
+import blogImage from "../../public/images/swiper-image-one.jpeg"
 import { FaFacebook, FaSquareInstagram, FaXTwitter, FaLinkedinIn, FaTwitch } from "react-icons/fa6"
 
 type Props = {}
@@ -19,7 +19,7 @@ const Footer = (props: Props) => {
                 </div>
                 <div>
                   <h3 className="font-bold mb-1">
-                    <Link href='/contact' className="styled-heading">Will Humans Be Able to Live in Mars in the Future?</Link>
+                    <Link href='/blog/blog-one' className="styled-heading">Will Humans Be Able to Live in Mars in the Future?</Link>
                   </h3>
                   <span className="block uppercase text-neutral-400 text-[.9em]">2 months ago</span>
                 </div>
@@ -30,7 +30,7 @@ const Footer = (props: Props) => {
                 </div>
                 <div>
                   <h3 className="font-bold mb-1">
-                    <Link href='/contact' className="styled-heading">Will Humans Be Able to Live in Mars in the Future?</Link>
+                    <Link href='/blog/blog-one' className="styled-heading">Will Humans Be Able to Live in Mars in the Future?</Link>
                   </h3>
                   <span className="block uppercase text-neutral-400 text-[.9em]">2 months ago</span>
                 </div>
@@ -46,7 +46,7 @@ const Footer = (props: Props) => {
                 </div>
                 <div>
                   <h3 className="font-bold mb-1">
-                    <Link href='/contact' className="styled-heading">Will Humans Be Able to Live in Mars in the Future?</Link>
+                    <Link href='/blog/blog-one' className="styled-heading">Will Humans Be Able to Live in Mars in the Future?</Link>
                   </h3>
                   <span className="block uppercase text-neutral-400 text-[.9em]">2 months ago</span>
                 </div>
@@ -57,7 +57,7 @@ const Footer = (props: Props) => {
                 </div>
                 <div>
                   <h3 className="font-bold mb-1">
-                    <Link href='/contact' className="styled-heading">Will Humans Be Able to Live in Mars in the Future?</Link>
+                    <Link href='/blog/blog-one' className="styled-heading">Will Humans Be Able to Live in Mars in the Future?</Link>
                   </h3>
                   <span className="block uppercase text-neutral-400 text-[.9em]">2 months ago</span>
                 </div>

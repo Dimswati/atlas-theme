@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "../ui/button"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import productOne from "../../public/images/product-one.jpeg"
@@ -11,7 +12,9 @@ const Product = (props: Props) => {
             <span className="absolute top-4 left-4 bg-blue-700 text-white px-4 py-1 rounded-xl text-xs">
                 39%
             </span>
-            <Image src={productOne} alt="product image" className="w-full aspect-square object-cover object-center rounded-lg" />
+            <Link href="/product/airpods-handsfree">
+                <Image src={productOne} alt="product image" className="w-full aspect-square object-cover object-center rounded-lg" />
+            </Link>
             <div className="flex justify-between items-start">
                 <div>
                     <h4 className="font-bold block mb-1">Airpods Handsfree</h4>
