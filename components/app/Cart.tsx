@@ -39,11 +39,11 @@ const Cart = (props: MenuProps) => {
 
     return (
         <aside className={cn('h-screen fixed top-0 right-0 z-50 w-[320px] px-5 dark:bg-black bg-white transition duration-500', isOpen ? 'translate-x-0' : 'translate-x-[320px]')}>
-            <div className="flex justify-between items-center my-8">
+            <div className="flex justify-between items-center my-8 pb-2 border-b border-neutral-300 dark:border-neutral-700">
+                <h2 className="text-xl">Cart</h2>
                 <Button size={'default'} variant={'ghost'} onClick={() => onClose()} className="px-0 hover:bg-transparent">
                     <AiOutlineClose />
                 </Button>
-                <h2 className="text-xl">Cart</h2>
             </div>
             <section className='text-sm font-medium flex flex-col gap-y-10'>
                 <div className="flex justify-between items-start">
