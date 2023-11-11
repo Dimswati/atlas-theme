@@ -11,8 +11,8 @@ const ThemeSwitcher = (props: Props) => {
     const { theme, setTheme } = useTheme()
 
     return (
-        <Button onClick={()=>setTheme(theme === "dark" ? "light" : "dark")} className="fixed bottom-4 right-4">
-            {theme === 'dark' ? <BsMoonFill/> : <BsFillSunFill/>}
+        <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+            {theme === 'dark' ? <BsMoonFill /> : <BsFillSunFill />}
         </Button>
     )
 }
