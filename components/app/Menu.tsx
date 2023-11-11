@@ -38,15 +38,15 @@ const Menu = (props: MenuProps) => {
     }
 
     return (
-        <aside className={cn('h-screen fixed top-0 left-0 z-50 w-[320px] my-8 px-5 dark:bg-black bg-white transition duration-500', isOpen ? 'translate-x-0' : '-translate-x-[320px]')}>
-            <div className="flex justify-between items-center">
+        <aside className={cn('h-screen fixed top-0 left-0 z-50 w-[320px] px-5 dark:bg-black bg-white transition duration-500', isOpen ? 'translate-x-0' : '-translate-x-[320px]')}>
+            <div className="flex justify-between items-center my-8">
                 <Image src={atlas} alt='dark atlas logo' className='w-[80px] h-auto inline-block dark:hidden' />
                 <Image src={atlasLight} alt='light atlas logo' className='w-[80px] h-auto dark:inline-block hidden' />
                 <Button size={'default'} variant={'ghost'} onClick={() => onClose()} className="px-0 hover:bg-transparent">
                     <AiOutlineClose />
                 </Button>
             </div>
-            <section className='text-sm font-medium flex flex-col gap-y-4 mt-12'>
+            <section className='text-sm font-medium flex flex-col gap-y-4'>
                 <Link href='/contact' className="hover:text-blue-600 transition-colors duration-500">Contact</Link>
                 <Link href='/category/food' className="hover:text-blue-600 transition-colors duration-500">Category</Link>
                 <Link href='/shop' className="hover:text-blue-600 transition-colors duration-500">Shop</Link>

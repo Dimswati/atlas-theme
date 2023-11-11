@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes"
 import { Button } from "../ui/button"
+import { BsFillSunFill, BsMoonFill } from "react-icons/bs"
 
 type Props = {}
 
@@ -11,7 +12,7 @@ const ThemeSwitcher = (props: Props) => {
 
     return (
         <Button onClick={()=>setTheme(theme === "dark" ? "light" : "dark")} className="fixed bottom-4 right-4">
-            switch
+            {theme === 'dark' ? <BsMoonFill/> : <BsFillSunFill/>}
         </Button>
     )
 }

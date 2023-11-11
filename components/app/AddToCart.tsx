@@ -33,7 +33,7 @@ const AddToCart = (props: Props) => {
                 <button onClick={decrement}>
                     <AiOutlineMinus />
                 </button>
-                <input type="text" name='count' value={count} onChange={(e) => handleChange(e)} className='p-0 ring-0 border-0 w-8 text-sm focus:outline-none focus:ring-0 focus:border-0 text-black dark:text-white text-center'/>
+                <input type="text" name='count' value={count} onChange={(e) => handleChange(e)} className='p-0 ring-0 border-0 w-8 text-sm focus:outline-none focus:ring-0 focus:border-0 text-black dark:text-white text-center dark:bg-transparent'/>
                 <button onClick={increment}>
                     <AiOutlinePlus />
                 </button>

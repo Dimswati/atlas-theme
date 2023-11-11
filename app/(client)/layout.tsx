@@ -7,6 +7,7 @@ import Header from '@/components/app/Header'
 import ThemeSwitcher from '@/components/app/ThemeSwitcher'
 import Footer from '@/components/app/Footer'
 import Menu from '@/components/app/Menu'
+import Cart from '@/components/app/Cart'
 
 const font = Poppins({
   subsets: ['latin'],
@@ -29,12 +30,13 @@ export default function RootLayout({
       <body className={cn(font.className, ' dark:text-white text-black')}>
         <ThemeProvider attribute='class' defaultTheme='light' enableSystem={false}>
           <Menu />
+          <Cart />
           <Header />
-          <div className='max-w-[1070px] mx-auto px-5 xl:px-0'>
+          <div className='relative max-w-[1070px] mx-auto px-5 xl:px-0'>
             {children}
+            <ThemeSwitcher />
           </div>
           <Footer />
-          <ThemeSwitcher />
         </ThemeProvider>
       </body>
     </html>
