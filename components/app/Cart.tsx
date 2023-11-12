@@ -113,6 +113,9 @@ const Cart = (props: MenuProps) => {
                     </div>
                 </div>
             </section>
+            <div>
+                fixed
+            </div>
         </aside>
     )
 }

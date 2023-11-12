@@ -44,7 +44,7 @@ export default defineType({
       name: 'categories',
       title: 'Categories',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      of: [{type: 'reference', to: {type: 'postCategory'}}],
     }),
     defineField({
       name: 'publishedAt',
@@ -54,7 +54,7 @@ export default defineType({
     defineField({
       name: 'body',
       title: 'Body',
-      type: 'blockContent',
+      type: 'richContent',
     }),
   ],
 

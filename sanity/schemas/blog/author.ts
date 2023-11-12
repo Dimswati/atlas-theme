@@ -37,15 +37,15 @@ export default defineType({
     defineField({
       name: 'bio',
       title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
+      type: 'blockContent'
+      // of: [
+      //   {
+      //     title: 'Block',
+      //     type: 'block',
+      //     styles: [{title: 'Normal', value: 'normal'}],
+      //     lists: [],
+      //   },
+      // ],
     }),
   ],
   preview: {
