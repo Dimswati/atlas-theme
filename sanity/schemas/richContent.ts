@@ -66,9 +66,9 @@ export default defineType({
                     type: 'string'
                 }
             ]
-        }),
-        defineArrayMember({
-            type: 'code'
         })
+        // defineArrayMember({
+        //     type: 'code'
+        // })
     ]
 })
