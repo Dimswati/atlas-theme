@@ -5,18 +5,16 @@ import { SanityDocument } from "next-sanity"
 
 type CategoryProps = {
     params: {
-        slug: string
+        category: string
     }
 }
 
-const Category = async({ params }: CategoryProps) => {
+const Category = async({ params: { category } }: CategoryProps) => {
 
     const posts = await sanityFetch<SanityDocument>({
         query: postsByCategoryQuery,
-        params
+        params: { "slug": category }
     })
-
-    console.log(posts)
 
     return (
         <section className="w-full md:basis-[70%] basis-full">
