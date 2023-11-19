@@ -12,9 +12,11 @@ import { cn } from "@/lib/utils"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 
-type MenuProps = {}
+type MenuProps = {
+    children: React.ReactNode
+}
 
-const Menu = (props: MenuProps) => {
+const Menu = ({ children }: MenuProps) => {
 
     const pathname = usePathname()
 
@@ -47,8 +49,8 @@ const Menu = (props: MenuProps) => {
                 </Button>
             </div>
             <section className='text-sm font-medium flex flex-col gap-y-4'>
+                {children}
                 <Link href='/contact' className="hover:text-blue-600 transition-colors duration-500">Contact</Link>
-                <Link href='/category/food' className="hover:text-blue-600 transition-colors duration-500">Category</Link>
                 <Link href='/shop' className="hover:text-blue-600 transition-colors duration-500">Shop</Link>
             </section>
         </aside>

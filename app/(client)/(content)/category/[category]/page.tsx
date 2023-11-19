@@ -1,4 +1,7 @@
 import BlogCardOne from "@/components/app/Blog/BlogCardOne"
+import { postsByCategoryQuery } from "@/sanity/lib/queries"
+import { sanityFetch } from "@/sanity/lib/sanityFetch"
+import { SanityDocument } from "next-sanity"
 
 type CategoryProps = {
     params: {
@@ -6,7 +9,15 @@ type CategoryProps = {
     }
 }
 
-const Category = ({ params: { slug } }: CategoryProps) => {
+const Category = async({ params }: CategoryProps) => {
+
+    const posts = await sanityFetch<SanityDocument>({
+        query: postsByCategoryQuery,
+        params
+    })
+
+    console.log(posts)
+
     return (
         <section className="w-full md:basis-[70%] basis-full">
             <h2 className='font-bold text-lg mb-6'>Food</h2>

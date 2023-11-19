@@ -12,7 +12,7 @@ import atlasLight from '../../public/images/atlas-light.png'
 import MenuSvg from '@/components/icons/MenuSvg'
 import useMenu from '@/lib/hooks/useMenu'
 
-const Header = () => {
+const Header = ({ children }: { children: React.ReactNode }) => {
 
     const { onOpen } = useMenu()
 
@@ -25,8 +25,8 @@ const Header = () => {
                 <Image src={atlas} alt='dark atlas logo' className='w-[80px] h-auto inline-block dark:hidden'/>
                 <Image src={atlasLight} alt='light atlas logo' className='w-[80px] h-auto dark:inline-block hidden'/>
                 <div className='text-sm font-medium md:flex gap-x-4 hidden ml-3'>
+                    {children}
                     <Link href='/contact'>Contact</Link>
-                    <Link href='/category'>Category</Link>
                     <Link href='/shop'>Shop</Link>
                 </div>
                 <div className='flex gap-x-4 md:ml-auto'>

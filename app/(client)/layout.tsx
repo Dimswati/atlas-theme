@@ -10,6 +10,7 @@ import Menu from '@/components/app/Menu'
 import Cart from '@/components/app/Cart'
 import FixedSection from '@/components/app/FixedSection'
 import CartIcon from '@/components/app/CartIcon'
+import MenuItemsList from '@/components/app/MenuItemsList'
 
 const font = Poppins({
   subsets: ['latin'],
@@ -31,9 +32,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cn(font.className, ' dark:text-white text-black')}>
         <ThemeProvider attribute='class' defaultTheme='light' enableSystem={false}>
-          <Menu />
+          <Menu>
+            <MenuItemsList/>
+          </Menu>
           <Cart />
-          <Header />
+          <Header>
+            <MenuItemsList/>
+          </Header>
           <div className='relative max-w-[1070px] mx-auto px-5 xl:px-0'>
             {children}
           </div>
