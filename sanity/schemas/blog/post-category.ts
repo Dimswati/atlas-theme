@@ -33,6 +33,14 @@ export default defineType({
           name: 'alt'
         },
       ]
+    }),
+    defineField({
+      title: 'Show in Navbar',
+      name: "showInNavbar",
+      type: "boolean",
+      description: "only 4 categories will be shown",
+      initialValue: false,
+      // hidden: ({ document }) => {} // I could have implemented asyc function to return the number of documents
     })
   ],
 })
