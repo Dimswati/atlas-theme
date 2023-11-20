@@ -1,9 +1,10 @@
 interface Image {
-    _key: string
+    key: string
     _type: "image"
+    alt?: string
     asset: {
-        alt: string
-        url: string
+        _ref: string
+        _type: string
     }
 }
 
@@ -13,15 +14,23 @@ interface PostCategory {
     _updatedAt: string
     _createdAt: string
     title: string
-    showInNavbar: boolean
     slug: {
         _type: "slug"
         current: string
-    },
-    image: Image
+    }
 }
 
 interface Post {
-    
+    _id: string
+    _updatedAt: string
+    _createdAt: string
+    title: string
+    slug: string
+    mainImage: Image
+    author: {
+        name: string
+        image: Image
+    },
+    category: string
 }
 

@@ -12,9 +12,19 @@ export const navbarCategoriesQuery = groq`
 } | order(_updatedAt desc) [0...3]`
 
 export const postsByCategoryQuery = groq`
-*[_type == "post" && categories -> slug.current == $slug] {
-    title
-  } | order(_updatedAt desc) [0...10]
+*[_type == "post" && categories -> slug.current == $category] {
+      _id,
+    _updatedAt,
+    _createdAt,
+    title,
+    "slug": slug.current,
+    mainImage,
+    "author": author -> {
+        name,
+        image
+    },
+    "category": categories -> title
+} | order(_updatedAt desc) [0...10]
 `
 
 

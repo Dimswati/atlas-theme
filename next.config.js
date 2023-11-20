@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['tmrwstudio.me']
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "cdn.sanity.io",
+            }
+        ],
+        domains: ['tmrwstudio.me', 'cdn.sanity.io']
     }
 }
 
