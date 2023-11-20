@@ -1,18 +1,10 @@
-import { client } from "./client"
-import { groq } from "next-sanity"
+import { parseISO, formatDistanceToNow } from "date-fns"
 
-import { navbarCategoriesQuery, postsByCategoryQuery } from "./queries"
-import { sanityFetch } from "./sanityFetch"
+export const humanReadableDateFormat = (timestamp: string): string => {
 
-export async function getMenuItems(): Promise<any> {
-    return client.fetch(navbarCategoriesQuery, {
-        caches: 'no-store'
-    })
+    // Parse the timestamp to a Date object
+    const timestampDate = parseISO(timestamp);
+
+    // Calculate the difference and format the result
+    return formatDistanceToNow(timestampDate, { addSuffix: true });
 }
-
-// export async function getPostsByCategory(params: {}): Promise<any> {
-//     return sanityFetch({
-//         query: postsByCategoryQuery,
-//         params
-//     })
-// }

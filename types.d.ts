@@ -1,6 +1,5 @@
 interface Image {
     key: string
-    _type: "image"
     alt?: string
     asset: {
         _ref: string
@@ -10,27 +9,25 @@ interface Image {
 
 interface PostCategory {
     _id: string
-    _type: "postCategory"
-    _updatedAt: string
-    _createdAt: string
-    title: string
-    slug: {
-        _type: "slug"
-        current: string
-    }
-}
-
-interface Post {
-    _id: string
     _updatedAt: string
     _createdAt: string
     title: string
     slug: string
-    mainImage: Image
+}
+
+interface Post {
+    _id: string;
+    _updatedAt: string;
+    _createdAt: string;
+    title: string;
+    slug: string;
+    mainImage: Image;
+    category: {
+      title: string;
+      slug: string;
+    };
     author: {
         name: string
         image: Image
     },
-    category: string
 }
-
