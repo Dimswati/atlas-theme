@@ -76,7 +76,7 @@ const BannerSwiper = ({ posts }: { posts: Post[] }) => {
                 effect='fade'
             >
                 {posts.map(post => (
-                    <SwiperSlide className='relative w-full group dark:text-white text-white'>
+                    <SwiperSlide key={post._id} className='relative w-full group dark:text-white text-white'>
                         <div className='z-10 absolute inset-0 bg-gradient-to-t from-black/70 to-transparent bg-blend-overlay rounded-xl'></div>
                         <div className='relative rounded-xl overflow-hidden w-full h-full'>
                             <Image src={urlForImage(post.mainImage).url()} alt='swiper image one' fill className='object-cover object-center rounded-xl group-hover:scale-110 transition duration-500' priority />
@@ -130,7 +130,7 @@ const BannerSwiper = ({ posts }: { posts: Post[] }) => {
                     className='md:h-[282px] w-[80vw] md:w-auto'
                 >
                     {posts.map(post => (
-                        <SwiperSlide className='swiper-controller'>
+                        <SwiperSlide key={post._id} className='swiper-controller'>
                             <div className="relative w-[72px] h-[72px]">
                                 <Image src={urlForImage(post.mainImage).url()} alt='swiper one' fill className='object-cover object-center rounded-full border-[2px] border-neutral-300/30' />
                                 <svg viewBox="0 0 72 72" className='controller'>
