@@ -61,6 +61,24 @@ export const singlePostQuery = groq`
 }[0]
 `
 
+export const bannerPostsQuery = groq`
+*[_type == "post"] {
+  _id,
+  _updatedAt,
+  _createdAt,
+  title,
+  "slug": slug.current,
+  mainImage,
+  "category": categories -> {
+    title,
+    "slug": slug.current
+  },
+    "author": author -> {
+        name,
+        image
+    }
+} | order(_updatedAt desc) [0...10]`
+
 export const productListQuery = groq`
 *[_type == "product"] {
   ...
