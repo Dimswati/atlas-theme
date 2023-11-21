@@ -6,7 +6,7 @@ export const navbarCategoriesQuery = groq`
         _id,
         title,
         "slug": slug.current
-} | order(_updatedAt desc) [0...3]`
+} | order(_updatedAt desc) [0...4]`
 
 export const postsByCategoryQuery = groq`
 *[_type == "post" && categories -> slug.current == $category] {
