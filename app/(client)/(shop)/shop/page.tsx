@@ -3,10 +3,17 @@ import SelectBox from "@/components/app/SelectBox"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { Button } from "@/components/ui/button"
 import Product from "@/components/app/Product"
+import { sanityFetch } from "@/sanity/lib/sanityFetch"
+import { productListQuery } from "@/sanity/lib/queries"
 
 type Props = {}
 
-const Shop = (props: Props) => {
+const Shop = async(props: Props) => {
+
+  const products: Product[] = await sanityFetch({
+    query: productListQuery
+  })
+
   return (
     <main>
       <Banner />
@@ -17,16 +24,9 @@ const Shop = (props: Props) => {
           <SelectBox />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
+          {products.map(product => (
+            <Product key={product._id} product={product}/>
+          ))}
         </div>
       </section>
     </main>

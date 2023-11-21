@@ -23,11 +23,23 @@ interface Post {
     slug: string;
     mainImage: Image;
     category: {
-      title: string;
-      slug: string;
+        title: string;
+        slug: string;
     };
     author: {
         name: string
         image: Image
     },
+}
+
+interface Product {
+    _id: string
+    _createdAt: string
+    _updatedAt: string
+    title: string
+    slug: string,
+    price: number
+    productImage: Image
+    description: string
+    category: string
 }

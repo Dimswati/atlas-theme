@@ -61,5 +61,41 @@ export const singlePostQuery = groq`
 }[0]
 `
 
+export const productListQuery = groq`
+*[_type == "product"] {
+  ...
+  _id,
+  _createdAt,
+  _updatedAt,
+  title,
+  "slug": slug.current,
+  price,
+  productImage
+} | order(_updatedAt desc)[0...10]`
+
+export const singleProductQuery = groq`
+*[_type == "product" && slug.current == $slug] {
+  _id,
+  _createdAt,
+  _updatedAt,
+  title,
+  "slug": slug.current,
+  price,
+  productImage,
+  description,
+  "category": category -> slug.current
+}[0]`
+
+export const relatedProductsQuery = groq`
+*[_type == "product" && category -> slug.current == $category] {
+  _id,
+  _createdAt,
+  _updatedAt,
+  title,
+  "slug": slug.current,
+  price,
+  productImage
+} | order(_updatedAt desc)[0...10]`
+
 
 

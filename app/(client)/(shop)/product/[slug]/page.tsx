@@ -7,10 +7,21 @@ import productOne from "../../../../../public/images/product-one.jpeg"
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import AddToCart from '@/components/app/AddToCart'
 import Product from '@/components/app/Product'
+import { sanityFetch } from '@/sanity/lib/sanityFetch'
+import { relatedProductsQuery, singleProductQuery } from '@/sanity/lib/queries'
+import { urlForImage } from '@/sanity/lib/image'
 
-type Props = {}
+const ProductPage = async ({ params }: { params: { slug: string } }) => {
 
-const ProductPage = (props: Props) => {
+  const product: Product = await sanityFetch({
+    query: singleProductQuery,
+    params
+  })
+
+  const products: Product[] = await sanityFetch({
+    query: relatedProductsQuery,
+    params: { "category": product.category }
+  })
 
   return (
     <main>
@@ -21,33 +32,25 @@ const ProductPage = (props: Props) => {
             39%
           </span>
           <Link href="/product/airpods-handsfree">
-            <Image src={productOne} alt="product image" className="w-full aspect-square object-cover object-center rounded-lg" />
+            <Image src={urlForImage(product.productImage).url()} alt="product image" className="w-full aspect-square object-cover object-center rounded-lg" width={500} height={500} />
           </Link>
         </div>
         <div className='basis-1/2'>
-          <h3 className='text-3xl font-bold mt-2 mb-6'>Camera Kodak 400</h3>
+          <h3 className='text-3xl font-bold mt-2 mb-6'>{product.title}</h3>
           <div className='flex gap-x-3 text-xl mb-6'>
             <span className='line-through'>$150.00</span>
             <span className='text-blue-700'>$150.00</span>
           </div>
-          <p className='text-[.9em] leading-6 mb-8'>
-            Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
+          <p className='text-[.9em] leading-6 mb-8'>{product.description}</p>
           <AddToCart />
         </div>
       </section>
       <section>
         <h3 className='text-2xl font-bold mt-2 mb-6'>Related products</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          {products.map(product => (
+            <Product key={product._id} product={product}/>
+          ))}
         </div>
       </section>
     </main>
