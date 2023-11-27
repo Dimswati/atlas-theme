@@ -14,11 +14,15 @@ interface CartProduct {
 }
 
 export interface CartStore {
-    itemsList: CartProduct[]
+    itemsList: CartProduct[],
+    totalAmountPrice: number,
+    totalQuantity: number
 }
 
 export const initialState: CartStore = {
-    itemsList: []
+    itemsList: [],
+    totalAmountPrice: 0,
+    totalQuantity: 0
 }
 
 export const cartSlice = createSlice({
@@ -46,15 +50,11 @@ export const cartSlice = createSlice({
                     totalPrice: newItem.price
                 })
             }
+
+            state.totalAmountPrice = state.itemsList.reduce((acc, item) => {
+                return acc + item.totalPrice
+            },0) 
         },
-        // prepare(product: Product, numberOfProducts = 1){
-        //     return {
-        //         payload: {
-        //             ...product,
-        //             amount: numberOfProducts
-        //         }
-        //     }
-        // }
 
         removeProduct (state, action: PayloadAction<Omit<CartProduct, 'quantity' | 'totalPrice'>>) {
             const existingItem = state.itemsList.find(product => product._id === action.payload._id)
@@ -71,6 +71,10 @@ export const cartSlice = createSlice({
                 existingItem.quantity--
                 existingItem.totalPrice -= action.payload.price
             }
+
+            state.totalAmountPrice = state.itemsList.reduce((acc, item) => {
+                return acc + item.totalPrice
+            },0) 
         }
     }
 })
