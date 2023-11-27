@@ -7,7 +7,7 @@ interface CartStore {
 }
 
 const useCart = create<CartStore>((set) => ({
-    isOpen: true,
+    isOpen: false,
     onOpen: () => set({ isOpen: true }),
     onClose: () => set({ isOpen: false })
 }))
