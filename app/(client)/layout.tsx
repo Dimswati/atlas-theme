@@ -13,6 +13,7 @@ import CartIcon from '@/components/app/CartIcon'
 import MenuItemsList from '@/components/app/MenuItemsList'
 import CartProvider from '@/provider/cart-provider'
 import { Toaster } from 'react-hot-toast'
+import siteMetadata from '@/lib/siteMetaData'
 
 const font = Poppins({
   subsets: ['latin'],
@@ -21,8 +22,9 @@ const font = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Atlas Blog theme',
-  description: 'Blog theme for your beautiful saas',
+  title: siteMetadata.title,
+  description: siteMetadata.description,
+  manifest: '/manifest.json'
 }
 
 export default function RootLayout({

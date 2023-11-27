@@ -114,5 +114,14 @@ export const relatedProductsQuery = groq`
   productImage
 } | order(_updatedAt desc)[0...10]`
 
+export const categoryListQuery = groq`
+*[_type == "postCategory"] {
+  _id,
+  _createdAt,
+  _updatedAt,
+  title,
+  "slug": slug.current,
+  mainImage
+}`
 
 

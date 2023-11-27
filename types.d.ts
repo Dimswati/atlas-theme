@@ -13,6 +13,7 @@ interface PostCategory {
     _createdAt: string
     title: string
     slug: string
+    mainImage: Image
 }
 
 interface Post {
