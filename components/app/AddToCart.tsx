@@ -3,11 +3,16 @@
 import React, { useState } from 'react'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { Button } from '../ui/button'
+import { useAppDispatch } from '@/redux/hooks'
+import { addProduct } from '@/redux/feature/cart/cartSlice'
 
-type Props = {}
+type Props = {
+    product: Product
+}
 
-const AddToCart = (props: Props) => {
+const AddToCart = ({ product }: Props) => {
 
+    const dispatch = useAppDispatch()
     const [count, setCount] = useState(1)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +32,13 @@ const AddToCart = (props: Props) => {
         })
     }
 
+    const updateProduct = () => {
+
+        console.log('update product')
+
+        dispatch(addProduct(product))
+      }
+
     return (
         <div className='flex gap-x-4'>
             <div className='h-11 px-4 flex items-center gap-x-2 border dark:border-neutral-800 text-[.7em] rounded-xl'>
@@ -38,7 +50,7 @@ const AddToCart = (props: Props) => {
                     <AiOutlinePlus />
                 </button>
             </div>
-            <Button className='bg-blue-700 text-white hover:bg-blue-700 hover:text-white h-11 rounded-xl'>
+            <Button className='bg-blue-700 text-white hover:bg-blue-700 hover:text-white h-11 rounded-xl' onClick={updateProduct}>
                 Add to cart
             </Button>
         </div>

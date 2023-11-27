@@ -10,6 +10,8 @@ import Product from '@/components/app/Product'
 import { sanityFetch } from '@/sanity/lib/sanityFetch'
 import { relatedProductsQuery, singleProductQuery } from '@/sanity/lib/queries'
 import { urlForImage } from '@/sanity/lib/image'
+import { useAppDispatch } from '@/redux/hooks'
+import { addProduct } from '@/redux/feature/cart/cartSlice'
 
 const ProductPage = async ({ params }: { params: { slug: string } }) => {
 
@@ -42,7 +44,7 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
             <span className='text-blue-700'>$150.00</span>
           </div>
           <p className='text-[.9em] leading-6 mb-8'>{product.description}</p>
-          <AddToCart />
+          <AddToCart product={product}/>
         </div>
       </section>
       <section>

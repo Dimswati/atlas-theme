@@ -1,131 +1,102 @@
 "use client"
 
-import Image from "next/image"
-import productImage from "../../public/images/product-one.jpeg"
 import Link from "next/link"
-import { Button } from "../ui/button"
 
-import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
-import useMenu from "@/lib/hooks/useMenu"
-import { cn } from "@/lib/utils"
-import { useEffect, useState } from "react"
-import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
 import useCart from "@/lib/hooks/useCart"
+import { useAppDispatch, useAppSelector } from "@/redux/hooks"
+import { useEffect, useState } from "react"
+import { urlForImage } from "@/sanity/lib/image"
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
+import Image from "next/image"
+import { formatAmount } from "@/lib/utils"
+import { addProduct, removeProduct } from "@/redux/feature/cart/cartSlice"
 
-type MenuProps = {}
+export default function Cart() {
 
-const Cart = (props: MenuProps) => {
+    // const pathname = usePathname()
+    const dispatch = useAppDispatch()
+    const items = useAppSelector((state) => state.cart.itemsList)
 
-    const pathname = usePathname()
+    console.log(items)
 
     const [isClient, setIsclient] = useState(false)
 
-    const { isOpen, onClose } = useCart()
+    const { isOpen, onClose, onOpen } = useCart()
+
+    const handleChange = () => {
+        if (isOpen) {
+            onClose()
+        } else {
+            onOpen()
+        }
+    }
 
     useEffect(() => {
         setIsclient(true)
     }, [])
-
-    useEffect(() => {
-        if (isOpen) {
-            onClose()
-        }
-
-    }, [pathname])
 
     if (!isClient) {
         return null
     }
 
     return (
-        <aside className={cn('h-screen fixed flex flex-col justify-between top-0 right-0 z-50 w-[320px] px-5 dark:bg-black bg-white transition duration-500', isOpen ? 'translate-x-0' : 'translate-x-[320px]')}>
-            <div>
-                <div className="flex justify-between items-center pb-2 my-8 border-b border-neutral-300 dark:border-neutral-700">
-                    <h2 className="text-lg">Products to Purchase</h2>
-                    <Button size={'default'} variant={'ghost'} onClick={() => onClose()} className="px-0 hover:bg-transparent">
-                        <AiOutlineClose />
-                    </Button>
-                </div>
-                <section className='text-sm font-medium flex flex-col gap-y-10'>
-                    <div className="flex justify-between items-start">
-                        <div className="relative w-20 aspect-square rounded-xl overflow-hidden">
-                            <Image src={productImage} alt="blog image" fill className="object-cover object-center rounded-xl hover:scale-110 transition duration-500" />
-                        </div>
-                        <div>
-                            <h3 className="font-bold mb-3">
-                                <Link href='/product/airpods-handsfree' className="text-base">Apple Watch series 6</Link>
-                            </h3>
-                            <div className="flex justify-between items-end">
-                                <div className='h-11 px-4 flex items-center gap-x-2 border dark:border-neutral-800 text-[.7em] rounded-xl'>
-                                    <button onClick={() => { }}>
-                                        <AiOutlineMinus />
-                                    </button>
-                                    <input type="text" name='count' className='p-0 ring-0 border-0 w-8 text-sm focus:outline-none focus:ring-0 focus:border-0 text-black dark:text-white text-center dark:bg-transparent' />
-                                    <button onClick={() => { }}>
-                                        <AiOutlinePlus />
-                                    </button>
+        <Sheet open={isOpen} onOpenChange={handleChange}>
+            <SheetContent>
+                <SheetHeader>
+                    <SheetTitle>Products To Purchase</SheetTitle>
+                </SheetHeader>
+                <section className='text-sm font-medium flex flex-col gap-y-10 h-[65vh] overflow-y-scroll scroll-smooth my-6'>
+                    {items.length > 0 ? (
+                        items.map(product => (
+                            <div key={product._id} className="flex gap-x-6 items-start">
+                                <div className="relative w-20 aspect-square rounded-xl overflow-hidden">
+                                    <Image src={urlForImage(product.productImage).url()} alt="product image" className="object-cover object-center rounded-xl hover:scale-110 transition duration-500" fill/>
                                 </div>
-                                <span className="text-lg">$78</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex justify-between items-start">
-                        <div className="relative w-20 aspect-square rounded-xl overflow-hidden">
-                            <Image src={productImage} alt="blog image" fill className="object-cover object-center rounded-xl hover:scale-110 transition duration-500" />
-                        </div>
-                        <div>
-                            <h3 className="font-bold mb-3">
-                                <Link href='/product/airpods-handsfree' className="text-base">Apple Watch series 6</Link>
-                            </h3>
-                            <div className="flex justify-between items-end">
-                                <div className='h-11 px-4 flex items-center gap-x-2 border dark:border-neutral-800 text-[.7em] rounded-xl'>
-                                    <button onClick={() => { }}>
-                                        <AiOutlineMinus />
-                                    </button>
-                                    <input type="text" name='count' className='p-0 ring-0 border-0 w-8 text-sm focus:outline-none focus:ring-0 focus:border-0 text-black dark:text-white text-center dark:bg-transparent' />
-                                    <button onClick={() => { }}>
-                                        <AiOutlinePlus />
-                                    </button>
+                                <div>
+                                    <h3 className="font-bold mb-3">
+                                        <Link href='/product/airpods-handsfree' className="text-lg">{product.title}</Link>
+                                    </h3>
+                                    <div className='flex gap-x-4 items-center mb-5'>
+                                        <button onClick={() => dispatch(removeProduct(product))} className="border dark:border-neutral-800 rounded-full p-3">
+                                            <AiOutlineMinus />
+                                        </button>
+                                        <span className="text-lg font-medium">{product.quantity}</span>
+                                        <button onClick={() => dispatch(addProduct(product))} className="border dark:border-neutral-800 rounded-full p-3">
+                                            <AiOutlinePlus />
+                                        </button>
+                                    </div>
+                                    <span className="text-base font-medium">{formatAmount(product.totalPrice)}</span>
                                 </div>
-                                <span className="text-lg">$78</span>
                             </div>
-                        </div>
-                    </div>
-                    <div className="flex justify-between items-start">
-                        <div className="relative w-20 aspect-square rounded-xl overflow-hidden">
-                            <Image src={productImage} alt="blog image" fill className="object-cover object-center rounded-xl hover:scale-110 transition duration-500" />
-                        </div>
+                        ))
+                    ) : (
                         <div>
-                            <h3 className="font-bold mb-3">
-                                <Link href='/product/airpods-handsfree' className="text-base">Apple Watch series 6</Link>
-                            </h3>
-                            <div className="flex justify-between items-end">
-                                <div className='h-11 px-4 flex items-center gap-x-2 border dark:border-neutral-800 text-[.7em] rounded-xl'>
-                                    <button onClick={() => { }}>
-                                        <AiOutlineMinus />
-                                    </button>
-                                    <input type="text" name='count' className='p-0 ring-0 border-0 w-8 text-sm focus:outline-none focus:ring-0 focus:border-0 text-black dark:text-white text-center dark:bg-transparent' />
-                                    <button onClick={() => { }}>
-                                        <AiOutlinePlus />
-                                    </button>
-                                </div>
-                                <span className="text-lg">$78</span>
-                            </div>
+                            The items you want to Purchase will appear here
                         </div>
-                    </div>
+                    )}
                 </section>
-            </div>
-            <div>
-                <div className="flex justify-between items-center pt-2 border-t border-neutral-300 dark:border-neutral-700">
-                    <h2 className="text-lg font-medium">Total:</h2>
-                    <span className="text-xl font-medium">$543</span>
-                </div>
-                <Button className="w-full my-8 bg-green-600 hover:bg-green-700 dark:text-white">
-                    Purchase via M-PESA
-                </Button>
-            </div>
-        </aside>
+                <SheetFooter>
+                    <div className="flex justify-between items-center pt-2 border-t border-neutral-300 dark:border-neutral-700 w-full">
+                        <h2 className="text-lg font-medium">Total:</h2>
+                        <span className="text-xl font-medium">{formatAmount(543)}</span>
+                    </div>
+                    <SheetClose asChild>
+                        <Button className="w-full my-8 bg-green-600 hover:bg-green-700 dark:text-white">
+                            Purchase via M-PESA
+                        </Button>
+                    </SheetClose>
+                </SheetFooter>
+            </SheetContent>
+        </Sheet>
     )
 }
-
-export default Cart

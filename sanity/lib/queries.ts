@@ -1,5 +1,4 @@
 import { groq } from "next-sanity";
-import { client } from "./client";
 
 export const navbarCategoriesQuery = groq`
     *[_type == "postCategory" && showInNavbar != false] {

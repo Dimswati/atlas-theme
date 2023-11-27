@@ -11,6 +11,8 @@ import Cart from '@/components/app/Cart'
 import FixedSection from '@/components/app/FixedSection'
 import CartIcon from '@/components/app/CartIcon'
 import MenuItemsList from '@/components/app/MenuItemsList'
+import CartProvider from '@/provider/cart-provider'
+import { Toaster } from 'react-hot-toast'
 
 const font = Poppins({
   subsets: ['latin'],
@@ -32,21 +34,24 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cn(font.className, ' dark:text-white text-black')}>
         <ThemeProvider attribute='class' defaultTheme='light' enableSystem={false}>
-          <Menu>
-            <MenuItemsList/>
-          </Menu>
-          <Cart />
-          <Header>
-            <MenuItemsList/>
-          </Header>
-          <div className='relative max-w-[1070px] mx-auto px-5 xl:px-0'>
-            {children}
-          </div>
-          <FixedSection>
-            <CartIcon/>
-            <ThemeSwitcher />
-          </FixedSection>
-          <Footer />
+          <CartProvider>
+            <Menu>
+              <MenuItemsList />
+            </Menu>
+            <Cart />
+            <Header>
+              <MenuItemsList />
+            </Header>
+            <div className='relative max-w-[1070px] mx-auto px-5 xl:px-0'>
+              {children}
+            </div>
+            <FixedSection>
+              <CartIcon />
+              <ThemeSwitcher />
+            </FixedSection>
+            <Footer />
+          </CartProvider>
+          <Toaster/>
         </ThemeProvider>
       </body>
     </html>
