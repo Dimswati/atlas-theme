@@ -59,8 +59,8 @@ export default function Cart() {
                 <section className='text-sm font-medium flex flex-col gap-y-10 h-[65vh] overflow-y-scroll no-scrollbar my-6'>
                     {items.length > 0 ? (
                         items.map(product => (
-                            <div>
-                                <div key={product._id} className="flex gap-x-6 items-start mb-5">
+                            <div key={product._id}>
+                                <div className="flex gap-x-6 items-start mb-5">
                                     <div className="relative w-20 aspect-square rounded-xl overflow-hidden">
                                         <Image src={urlForImage(product.productImage).url()} alt="product image" className="object-cover object-center rounded-xl hover:scale-110 transition duration-500" fill />
                                     </div>
